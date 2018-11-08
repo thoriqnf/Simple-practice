@@ -34,6 +34,12 @@ export default class TodoList extends React.Component {
     });
   };
 
+  handleDeleteToDo = (id) =>{
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
+    });
+  };
+
   render(){ 
     let todos = [];
 
@@ -49,9 +55,10 @@ export default class TodoList extends React.Component {
       <div>
         <TodoForm onSubmit={this.addTodo} />
         {todos.map(todo =>(
-          <Todo 
+          <Todo
             key={todo.id} 
             toggleComplete={() => this.toggleComplete(todo.id)}
+            onDelete={() => this.handleDeleteToDo(todo.id)}
             todo={todo}/>
         ))}
         <div>todos left: {this.state.todos.filter(todo => !todo.complete).length} </div>
