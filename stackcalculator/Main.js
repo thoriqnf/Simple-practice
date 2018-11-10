@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'pink',
     borderBottomWidth: 1,
-    borderColor: '#fff',
+    borderColor: '#424242',
   },
 });
 
