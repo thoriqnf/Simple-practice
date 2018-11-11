@@ -29,7 +29,10 @@ const styles = StyleSheet.create({
 });
 
 const Button = ({ text, special, onPress }) => (
-  <TouchableOpacity onPress={onPress} style={special ? styles.specialContainer : styles.container}>
+  <TouchableOpacity
+    onPress={() => onPress(text)}
+    style={special ? styles.specialContainer : styles.container}
+  >
     <Text style={special ? styles.specialText : styles.text}>{text}</Text>
   </TouchableOpacity>
 );

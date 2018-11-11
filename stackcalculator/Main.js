@@ -8,8 +8,10 @@
 
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Button from './Button';
+import { pressNum } from './modules';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,12 +44,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = () => (
+const App = ({ currentNumber, pressNumWithDispatch }) => (
   <View style={styles.container}>
     <View style={styles.top}>
       <Text style={styles.number}>0</Text>
       <Text style={styles.number}>0</Text>
-      <Text style={styles.number}>0</Text>
+      <Text style={styles.number}>{currentNumber}</Text>
     </View>
     <View style={styles.bottom}>
       <View style={styles.row}>
@@ -57,9 +59,9 @@ const App = () => (
         <Button text="/" />
       </View>
       <View style={styles.row}>
-        <Button text="9" />
-        <Button text="8" />
-        <Button text="7" />
+        <Button text="9" onPress={pressNumWithDispatch} />
+        <Button text="8" onPress={pressNumWithDispatch} />
+        <Button text="7" onPress={pressNumWithDispatch} />
         <Button text="X" />
       </View>
       <View style={styles.row}>
@@ -83,4 +85,12 @@ const App = () => (
   </View>
 );
 
-export default connect()(App);
+export default connect(
+  state => ({ currentNumber: state }),
+  dispatch => bindActionCreators(
+    {
+      pressNumWithDispatch: pressNum,
+    },
+    dispatch,
+  ),
+)(App);
