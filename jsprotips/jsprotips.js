@@ -55,3 +55,36 @@ function feed(animal) {
   const { name, meal, diet } = animal;
   return `Feed ${name} ${meal} ${diet}`;
 }
+
+// Template Literal
+const horse = {
+  name: "Topher",
+  size: "large",
+  skills: ["jousting", "racing"],
+  age: 7
+};
+
+// Bad Code
+let bio =
+  horse.name +
+  " is a " +
+  horse.size +
+  "has skills" +
+  horse.skills +
+  "has age" +
+  horse.age;
+
+// Good Code
+const { name, size, skills } = horse;
+
+bio = `${name} is a ${size} ${skills.join(" & ")}`;
+
+console.log(bio);
+
+// Advanced Tag Example
+function horseAge(str, age) {
+  const ageStr = age > 5 ? "old" : "young";
+  return `${str[0]}${ageStr} at ${age} years`;
+}
+
+const bio2 = horseAge`this horse is ${horse.age}`;
