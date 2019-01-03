@@ -30,3 +30,28 @@ console.timeEnd("looper");
 
 // Stack Trace logs
 const deleteMe = () => console.trace("bye bye database");
+
+// Destructuring
+
+const turtle = {
+  name: "Bob",
+  legs: 4,
+  shell: true,
+  type: "amphibi",
+  meal: 10,
+  diet: "berries"
+};
+
+// Bad Code
+function feed(animal) {
+  return `feed ${animal.name} ${animal.meal}`;
+}
+
+function feed({ name, meal, diet }) {
+  return `Feed ${name} ${meal} ${diet}`;
+}
+
+function feed(animal) {
+  const { name, meal, diet } = animal;
+  return `Feed ${name} ${meal} ${diet}`;
+}
