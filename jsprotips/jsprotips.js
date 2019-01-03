@@ -88,3 +88,38 @@ function horseAge(str, age) {
 }
 
 const bio2 = horseAge`this horse is ${horse.age}`;
+
+// Spread Syntax
+
+// Objects
+const pikachu = { name: "Pikachu" };
+const stats = { hp: 40, attack: 60, defense: 45 };
+
+// Bad Code
+pikachu["hp"] = stats.hp;
+pikachu["attack"] = stats.attack;
+pikachu["defense"] = stats.defense;
+
+// OR
+
+const lv10 = Object.assign(pikachu, stats);
+const lv11 = Object.assign(pikachu, { hp: 45 });
+
+// Good Code
+const lv10 = { ...pikachu, ...stats };
+const lv11 = { ...pikachu, hp: 45 };
+
+// In Arrays
+let pokemon = ["Arbok", "Raichu", "Sandshrew"];
+
+// Bad Code
+pokemon.push("Bulbasaur");
+pokemon.push("Metapod");
+pokemon.push("Weedle");
+
+//Good Code
+// Push
+pokemon = [...pokemon, "Bulbasaur", "Metapod", "Weedle"];
+
+// Shift
+pokemon = ["Bulbasaur", "Metapod", "Weedle", ...pokemon];
